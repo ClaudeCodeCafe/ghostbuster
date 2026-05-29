@@ -13,14 +13,15 @@ Detect and clean ghost teams, orphaned tasks, and numbered agent duplicates from
 ## Install
 
 ```bash
-claude plugin add /path/to/ghostbuster
+/plugin marketplace add ClaudeCodeCafe/ghostbuster
+/plugin install ghostbuster@ghostbuster
 ```
 
 ## Usage
 
 ```
-/ghostbuster scan    # detect ghosts (read-only)
-/ghostbuster clean   # detect + delete after confirmation
+/ghostbuster:scan    # detect ghosts (read-only)
+/ghostbuster:clean   # detect + delete after confirmation
 ```
 
 ## License
