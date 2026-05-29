@@ -9,6 +9,7 @@ TEAMS_DIR="${HOME}/.claude/teams"
 TASKS_DIR="${HOME}/.claude/tasks"
 
 # Collect running claude session IDs from ps
+# shellcheck disable=SC2009  # need full command line to extract session UUIDs; pgrep can't
 active_sessions="$(ps aux 2>/dev/null | grep -i '[c]laude' | grep -oE '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' | sort -u || true)"
 
 # Check if tmux is available and running

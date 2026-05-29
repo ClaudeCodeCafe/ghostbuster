@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags-ignore:
+      - 'v*'
+  pull_request:
+    branches: [main]
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ShellCheck
+        run: shellcheck bin/ghost-scan.sh
+
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make scanner executable
+        run: chmod +x bin/ghost-scan.sh
+      - name: Run scanner on empty environment
+        run: |
+          # Should produce valid JSON even with no teams/tasks dirs
+          OUTPUT=$(bin/ghost-scan.sh)
+          echo "$OUTPUT"
+          echo "$OUTPUT" | python3 -m json.tool > /dev/null
+          echo "OK: scanner produces valid JSON"
+      - name: Verify expected JSON keys
+        run: |
+          bin/ghost-scan.sh | python3 -c "
+          import json, sys
+          d = json.load(sys.stdin)
+          for key in ('ghost_teams', 'orphan_tasks', 'active_teams', 'summary'):
+              assert key in d, f'missing key: {key}'
+          print('OK: all expected keys present')
+          "
+
+  validate-plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate plugin.json
+        run: |
+          python3 -c "
+          import json
+          d = json.load(open('.claude-plugin/plugin.json'))
+          for key in ('name', 'description', 'version', 'skills', 'commands'):
+              assert key in d, f'plugin.json missing key: {key}'
+          assert d['name'] == 'ghostbuster', 'name mismatch'
+          print('OK: plugin.json valid, version', d['version'])
+          "
+      - name: Verify referenced skills and commands exist
+        run: |
+          test -f skills/ghostbuster/SKILL.md
+          test -f commands/scan.md
+          test -f commands/clean.md
+          echo "OK: skill and command files present"
