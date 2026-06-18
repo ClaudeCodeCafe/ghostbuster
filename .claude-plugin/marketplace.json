@@ -1,7 +1,9 @@
 {
   "name": "ghostbuster",
   "id": "ghostbuster",
-  "owner": { "name": "ClaudeCodeCafe" },
+  "owner": {
+    "name": "ClaudeCodeCafe"
+  },
   "metadata": {
     "description": "Detect and clean ghost teams, orphaned tasks, and numbered agent duplicates from Claude Code Agent Teams.",
     "version": "0.2.0"
@@ -10,10 +12,19 @@
     {
       "name": "ghostbuster",
       "source": "./",
-      "description": "Scan and clean ghost teams from ~/.claude/teams/ and ~/.claude/tasks/ — orphaned configs, numbered agent duplicates, dead tmux panes, and orphan task dirs. Includes /scan and /clean commands.",
+      "description": "Scan and clean ghost teams from ~/.claude/teams/ and ~/.claude/tasks/ \u2014 orphaned configs, numbered agent duplicates, dead tmux panes, and orphan task dirs. Includes /scan and /clean commands.",
       "version": "0.2.0",
-      "author": { "name": "ClaudeCodeCafe" },
-      "keywords": ["claude", "claude-code", "agent-teams", "cleanup", "ghost", "plugin"],
+      "author": {
+        "name": "ClaudeCodeCafe"
+      },
+      "keywords": [
+        "claude",
+        "claude-code",
+        "agent-teams",
+        "cleanup",
+        "ghost",
+        "plugin"
+      ],
       "category": "tools"
     }
   ]
