@@ -4,14 +4,14 @@
   "owner": { "name": "ClaudeCodeCafe" },
   "metadata": {
     "description": "Detect and clean ghost teams, orphaned tasks, and numbered agent duplicates from Claude Code Agent Teams.",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "ghostbuster",
       "source": "./",
       "description": "Scan and clean ghost teams from ~/.claude/teams/ and ~/.claude/tasks/ — orphaned configs, numbered agent duplicates, dead tmux panes, and orphan task dirs. Includes /scan and /clean commands.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": { "name": "ClaudeCodeCafe" },
       "keywords": ["claude", "claude-code", "agent-teams", "cleanup", "ghost", "plugin"],
       "category": "tools"
