@@ -1,7 +1,7 @@
 {
   "name": "ghostbuster",
   "description": "Detect and clean ghost teams, orphaned tasks, and numbered agent duplicates from ~/.claude/teams/ and ~/.claude/tasks/",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": { "name": "ClaudeCodeCafe" },
   "license": "MIT",
   "skills": ["./skills/ghostbuster"],
