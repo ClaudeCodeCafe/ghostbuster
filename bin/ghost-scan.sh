@@ -25,8 +25,6 @@ import sys
 import os
 import json
 import re
-import signal
-
 teams_dir = sys.argv[1]
 tasks_dir = sys.argv[2]
 tmux_running = sys.argv[3] == "true"
