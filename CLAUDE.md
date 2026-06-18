@@ -19,6 +19,14 @@ Claude Code plugin to detect and clean ghost teams from Agent Teams.
 /plugin install ghostbuster@ghostbuster
 ```
 
+## Git
+
+コミットメッセージの末尾に署名を付与する:
+
+```
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
 ## Version sync
 
 Keep `version` consistent across `.claude-plugin/plugin.json` and
